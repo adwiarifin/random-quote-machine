@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Quote Generator</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="quote">
+		
+	</div>
+	<div id="author">
+		
+	</div>
+	<button id="random">
+		Random
+	</button>
+	<div id="social">
+		<ul>
+			<li><a href="#">Facebook</a></li>
+			<li><a href="#">Twitter</a></li>
+			<li><a href="#">LinkedIn</a></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		function getRandom(){
+			$.getJSON("https://talaikis.com/api/quotes/random/", function( data ) {
+				$("#quote").text(data.quote);
+				$("#author").text(data.author);
+			});
+		}
+
+		$(document).ready(function(){
+		    $("#random").click(function(){
+		        getRandom();
+		    });
+
+		    getRandom();
+		});
+	</script>
+</body>
+</html>
